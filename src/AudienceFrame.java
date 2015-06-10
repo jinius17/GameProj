@@ -62,7 +62,7 @@ public class AudienceFrame extends JFrame {
 			} else if (corrAnswers < 10) {
 				data = percentage(question, 17, 40);
 			} else {
-				data = percentage(question, 19, 35);
+				data = percentage(question, 16, 35);
 			}
 			return data;
 		}
@@ -99,21 +99,12 @@ public class AudienceFrame extends JFrame {
 				i++;
 			}
 		}
-		for(int j =0;j<4;j++){
-			if(data[j]==0){
-				data[j] = 100-sum;
+		for (int j = 0; j < 4; j++) {
+			if (data[j] == 0) {
+				data[j] = 100 - sum;
 			}
 		}
 
-		// for (int j = 0; j < Answers.size() - 1; j++) {
-		// if (q.getCorrectAnswerNumber() == j) {
-		// data[j] = corAns;
-		// } else {
-		// data[j] = r.nextInt(100 - sum);
-		// sum += data[j];
-		// }
-		// }
-		// data[Answers.size() - 1] = 100 - sum;
 		return checkData(data, corAns);
 	}
 

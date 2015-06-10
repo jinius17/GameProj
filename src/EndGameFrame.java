@@ -10,7 +10,7 @@ import javax.swing.*;
 public class EndGameFrame extends JFrame implements ActionListener {
 
 	private TextField nameField;
-	private JButton confirmButton;
+	private JButton confirmButton,exitButton;
 	private JLabel scoreLabel, pictureLabel;
 	private JPanel mainPanel;
 	private MainWindow window;
@@ -43,10 +43,16 @@ public class EndGameFrame extends JFrame implements ActionListener {
 		pictureLabel = new JLabel(new ImageIcon(this.getClass().getResource(
 				"Images/back1_blur.png")));
 		mainPanel = new JPanel();
+		
+		exitButton = new JButton(new ImageIcon(this.getClass().getResource("/Images/exit.jpg")));
+		exitButton.setContentAreaFilled(false);
+		exitButton.setFocusPainted(false);
+		exitButton.setBorderPainted(false);
 		mainPanel.setLayout(null);
 		Font arial = new Font("Arial", Font.BOLD, 17);
 
 		confirmButton.addActionListener(this);
+		exitButton.addActionListener(this);
 		scoreLabel.setFont(arial);
 		scoreLabel.setForeground(Color.ORANGE);
 
@@ -54,10 +60,12 @@ public class EndGameFrame extends JFrame implements ActionListener {
 		nameField.setBounds(130, 140, 100, 25);
 		pictureLabel.setBounds(0, 0, 400, 400);
 		confirmButton.setBounds(130, 200, 90, 40);
+		exitButton.setBounds(130, 250, 80, 35);
 
 		mainPanel.add(scoreLabel);
 		mainPanel.add(nameField);
 		mainPanel.add(confirmButton);
+		mainPanel.add(exitButton);
 		mainPanel.add(pictureLabel);
 
 		this.setContentPane(mainPanel);
@@ -99,13 +107,21 @@ public class EndGameFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		stats.addPlayer(new Player(nameField.getText(), moneyEarned, moneyList
-				.get(moneyEarned - 1)));
-		stats.sortList();
-		serializing();
-		window.setVisible(true);
-		this.dispose();
-		game.dispose();
+		
+		if(e.getSource() == confirmButton){
+			stats.addPlayer(new Player(nameField.getText(), moneyEarned,
+					moneyList.get(moneyEarned - 1)));
+			stats.sortList();
+			serializing();
+			window.setVisible(true);
+			this.dispose();
+			game.dispose();
+		}
+		else{
+			window.setVisible(true);
+			this.dispose();
+			game.dispose();
+		}
 
 	}
 

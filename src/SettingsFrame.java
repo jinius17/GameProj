@@ -41,8 +41,11 @@ public class SettingsFrame extends JFrame implements ActionListener {
 		this.window = window;
 		this.stat = stat;
 
-		eraseHighScoresButton = new JButton("Διαγραφή High Score");
+		eraseHighScoresButton = new JButton(new ImageIcon(this.getClass().getResource("/Images/Delete_Stat.jpg")));
 		eraseHighScoresButton.addActionListener(this);
+		eraseHighScoresButton.setContentAreaFilled(false);
+		eraseHighScoresButton.setFocusPainted(false);
+		eraseHighScoresButton.setBorderPainted(false);
 
 		backButton = new JButton(back);
 		backButton.addActionListener(this);
@@ -63,7 +66,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
 
 		soundLabel.setBounds(80, 100, 80, 20);
 		soundControl.setBounds(180, 100, 25, 20);
-		eraseHighScoresButton.setBounds(80, 150, 190, 20);
+		eraseHighScoresButton.setBounds(80, 150, 80, 35);
 		backgroundLabel.setBounds(0, 0, 400, 400);
 		backButton.setBounds(60, 300, 50, 20);
 
